@@ -1,0 +1,3 @@
+[submodule "kilowallet-server"]
+	path = kilowallet-server
+	url = https://github.com/Kilombino/kilowallet-server.git
