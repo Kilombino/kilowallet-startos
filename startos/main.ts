@@ -112,7 +112,12 @@ export const main = sdk.setupMain(async ({ effects }) => {
     .addDaemon('kilowallet', {
       subcontainer: sub,
       exec: {
-        command: ['java', '-Xmx256m', '-jar', '/opt/kilowallet/kilowallet-server.jar'],
+        command: [
+          'java',
+          '-Xmx256m',
+          '-jar',
+          '/opt/kilowallet/kilowallet-server.jar',
+        ],
         env: {
           KILOWALLET_DATA: '/data',
           KILOWALLET_PORT: String(uiPort),
