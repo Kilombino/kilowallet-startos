@@ -12,11 +12,12 @@ type NodeManifest = T.SDKManifest & {
 
 type KwEvent = { at: number; title: string; text: string; pool: string }
 
+// Coinjoin and Ark events (Ark titles start with "Ark").
 const levelOf = (title: string) =>
-  /confirmed/i.test(title)
-    ? ('success' as const)
-    : /refused|cancelled|NOT signed/i.test(title)
-      ? ('warning' as const)
+  /refused|cancelled|NOT signed|failed|expire|not running/i.test(title)
+    ? ('warning' as const)
+    : /confirmed|received|spendable|renewed|activated/i.test(title)
+      ? ('success' as const)
       : ('info' as const)
 
 // Waits for the node to answer, then asks it, with its cookie, whether BLAKE2b is active:
@@ -109,8 +110,9 @@ export const main = sdk.setupMain(async ({ effects }) => {
     'kilowallet',
   )
 
-  // Coinjoin events the wallet raised since main started (a new pool, someone joined, a
-  // vote, time to sign, a confirmation), turned into StartOS notifications. Polled from
+  // Coinjoin and Ark events the wallet raised since main started (a new pool, time to sign, a
+  // confirmation; an Ark payment, a renewal, coins close to expiry, the Ark engine not running),
+  // turned into StartOS notifications. Polled from
   // inside the container: the endpoint answers loopback only.
   let since = Date.now()
 
@@ -126,6 +128,8 @@ export const main = sdk.setupMain(async ({ effects }) => {
     .addDaemon('kilowallet', {
       subcontainer: sub,
       exec: {
+        // The Ark engine (kilombino-arkd) is a child of this process: it starts once the wallet
+        // is unlocked, keeps its data in /data/ark, and stops with it.
         command: [
           'java',
           '-Xmx256m',
@@ -188,7 +192,9 @@ export const main = sdk.setupMain(async ({ effects }) => {
           }
           return {
             result: 'success',
-            message: i18n('Pool events show up as StartOS notifications'),
+            message: i18n(
+              'Coinjoin and Ark events show up as StartOS notifications',
+            ),
           }
         },
       },

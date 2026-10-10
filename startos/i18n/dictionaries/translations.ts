@@ -11,7 +11,7 @@ export default {
     6: 'La interfaz web no está lista',
     7: 'Notificaciones',
     8: 'Esperando a Kilowallet',
-    9: 'Los avisos de los pools aparecen como notificaciones de StartOS',
+    9: 'Los avisos de coinjoin y de Ark aparecen como notificaciones de StartOS',
     10: 'Interfaz web',
     11: 'Tu wallet, hecha para el móvil',
     12: 'Actualiza el nodo BLAKE2b: Kilowallet necesita la 1.0.0:30 o posterior, la instalada es',

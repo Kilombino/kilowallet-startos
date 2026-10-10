@@ -11,7 +11,7 @@ const dict = {
   'The web interface is not ready': 6,
   Notifications: 7,
   'Waiting for Kilowallet': 8,
-  'Pool events show up as StartOS notifications': 9,
+  'Coinjoin and Ark events show up as StartOS notifications': 9,
   'Update the BLAKE2b node: Kilowallet needs 1.0.0:30 or later, installed is': 12,
   'The BLAKE2b node is stopped': 13,
 
