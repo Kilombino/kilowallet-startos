@@ -23,6 +23,16 @@ your own node.
 - A watch-only wallet sends by exporting a PSBT, signing it elsewhere (for example in Bitcoin
   Knots) and bringing it back. Only BLAKE2b unified (0x21) signatures are accepted.
 
+## Coinjoin (beta)
+
+- The **COINJOIN** tab mixes a coin with other people's, in the same pools as the Kilowallet app and
+  Kilojoin (relay.kilombino.com). It is off until you turn it on there.
+- Only a hot wallet with native SegWit (bc1q) addresses can join. Joining and signing ask for your
+  password; the server checks your mixed output, your change and your fee before signing.
+- Keep Kilowallet running until the round is sent: the server keeps it going with the page closed.
+  Pool events show up as StartOS notifications, and through your own Telegram bot if you set one.
+- *Sign on its own* (optional) accepts and signs by itself, only while the wallet is unlocked.
+
 ## Updates
 
 New versions arrive through the Kilombino store (registry.kilombino.com) and StartOS offers them in

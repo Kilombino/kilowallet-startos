@@ -10,6 +10,15 @@ type NodeManifest = T.SDKManifest & {
   volumes: ['main', 'i2pd']
 }
 
+type KwEvent = { at: number; title: string; text: string; pool: string }
+
+const levelOf = (title: string) =>
+  /confirmed/i.test(title)
+    ? ('success' as const)
+    : /refused|cancelled|NOT signed/i.test(title)
+      ? ('warning' as const)
+      : ('info' as const)
+
 // Waits for the node to answer, then asks it, with its cookie, whether BLAKE2b is active:
 // `bitcoind` is also the id of SHA256d Bitcoin. Refuses (exit 1) any other chain.
 // (rc3 renamed getdeploymentinfo's top-level `hardfork` to `blake2b`; accept both.)
@@ -100,6 +109,11 @@ export const main = sdk.setupMain(async ({ effects }) => {
     'kilowallet',
   )
 
+  // Coinjoin events the wallet raised since main started (a new pool, someone joined, a
+  // vote, time to sign, a confirmation), turned into StartOS notifications. Polled from
+  // inside the container: the endpoint answers loopback only.
+  let since = Date.now()
+
   return sdk.Daemons.of(effects)
     .addOneshot('chain', {
       subcontainer: sub,
@@ -134,5 +148,50 @@ export const main = sdk.setupMain(async ({ effects }) => {
           }),
       },
       requires: ['chain'],
+    })
+    .addHealthCheck('notifications', {
+      ready: {
+        display: i18n('Notifications'),
+        gracePeriod: 0,
+        trigger: sdk.trigger.cooldownTrigger(20_000),
+        fn: async () => {
+          const r = await sub.exec([
+            'curl',
+            '--fail',
+            '--silent',
+            '--max-time',
+            '10',
+            `http://127.0.0.1:${uiPort}/internal/events?since=${since}`,
+          ])
+          if (r.exitCode !== 0)
+            return {
+              result: 'loading',
+              message: i18n('Waiting for Kilowallet'),
+            }
+          let events: KwEvent[] = []
+          try {
+            events = JSON.parse(r.stdout.toString()) as KwEvent[]
+          } catch {
+            return {
+              result: 'loading',
+              message: i18n('Waiting for Kilowallet'),
+            }
+          }
+          // Oldest first, so the panel (newest on top) reads in order.
+          for (const e of events.sort((a, b) => a.at - b.at)) {
+            since = Math.max(since, e.at)
+            await sdk.notification.create(effects, {
+              level: levelOf(e.title),
+              title: e.title,
+              message: e.text,
+            })
+          }
+          return {
+            result: 'success',
+            message: i18n('Pool events show up as StartOS notifications'),
+          }
+        },
+      },
+      requires: ['kilowallet'],
     })
 })
