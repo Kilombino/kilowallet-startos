@@ -23,17 +23,20 @@ your own node.
 - A watch-only wallet sends by exporting a PSBT, signing it elsewhere (for example in Bitcoin
   Knots) and bringing it back. Only BLAKE2b unified (0x21) signatures are accepted.
 
-## Coinjoin (beta)
+## Coinjoin
 
-- The **COINJOIN** tab mixes a coin with other people's, in the same pools as the Kilowallet app and
+- The **COINJOIN** tab mixes your coins with other people's, in the same pools as the Kilowallet app and
   Kilojoin (relay.kilombino.com). It is off until you turn it on there.
-- Only a hot wallet with native SegWit (bc1q) addresses can join. Joining and signing ask for your
-  password; the server checks your mixed output, your change and your fee before signing.
+- Only a hot wallet can join. A pool is native SegWit (bc1q) or Taproot (bc1p), and takes coins of its
+  type only: the wallet has both accounts (the Taproot one is set up at the first unlock after 0.3.0).
+  You can bring several coins if the pool allows it, and make the perfect (exact) coin first.
+  Joining and signing ask for your password; the server checks your mixed output, your change and your
+  fee before signing.
 - Keep Kilowallet running until the round is sent: the server keeps it going with the page closed.
   Pool events show up as StartOS notifications, and through your own Telegram bot if you set one.
 - *Sign on its own* (optional) accepts and signs by itself, only while the wallet is unlocked.
 
-## Ark (beta)
+## Ark
 
 - The **ARK** tab gives you Ark through the Paperclip Ark server (ark.paperclippool.xyz): fast, cheap
   payments to Ark addresses and to Lightning, without channels. It is off until you activate it
