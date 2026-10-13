@@ -1,12 +1,12 @@
 import { IMPOSSIBLE, VersionInfo } from '@start9labs/start-sdk'
 
 export const current = VersionInfo.of({
-  version: '0.3.0:0',
+  version: '0.4.0:0',
   releaseNotes: {
     en_US:
-      "Taproot for the hot wallet, as in the Kilowallet app. Next to its native SegWit account (BIP-84, bc1q) the wallet now has a Taproot one (BIP-86, bc1p), set up the next time you unlock it. Both are always followed: the balance, coins and movements add them up. RECEIVE lets you pick bc1q or bc1p. A send (and coin control) can mix coins of both, each signed with its own key and the unified sighash, and the review shows where the change goes. Coinjoin: Taproot pools can now be opened and joined with your bc1p coins, and the perfect (exact) coin is made of the pool's type, paid with any of your coins.",
+      "One password per pool, as in Kilowallet 1.0. Sign on its own is now on by default: the password you give when opening or joining a pool is the only one, and the round accepts closing and signs by itself, also after you lock the wallet (the keys of that round's coins stay in memory until it ends). The perfect (exact) coin now joins its pool, or opens the one you were setting up, by itself at its first confirmation. Security: a round closed with fewer people than the pool's minimum is never signed. Fixed: your pools showed as [object HTMLDivElement].",
     es_ES:
-      'Taproot en el hot wallet, como en la app Kilowallet. Junto a la cuenta native SegWit (BIP-84, bc1q), el monedero tiene ahora una Taproot (BIP-86, bc1p), que se crea la próxima vez que lo desbloquees. Las dos se siguen siempre: el saldo, las monedas y los movimientos las suman. RECIBIR deja elegir bc1q o bc1p. Un envío (y el coin control) puede mezclar monedas de las dos, cada una firmada con su clave y la firma unificada, y en la revisión ves a dónde va el cambio. Coinjoin: ya se pueden abrir pools Taproot y entrar en ellos con tus monedas bc1p, y la moneda perfecta (exacta) se crea del tipo del pool, pagada con cualquiera de tus monedas.',
+      "Una contraseña por pool, como en Kilowallet 1.0. Firmar solo viene ahora activado: la contraseña que das al abrir o unirte a un pool es la única, y la ronda acepta el cierre y firma sola, también después de bloquear el monedero (las claves de las monedas de esa ronda quedan en memoria hasta que acaba). La moneda perfecta (exacta) entra ahora sola en su pool, o abre el que estabas preparando, al tener su primera confirmación. Seguridad: nunca se firma una ronda cerrada con menos gente que el mínimo del pool. Arreglado: tus pools salían como [object HTMLDivElement].",
   },
   migrations: {
     up: async ({ effects }) => {},

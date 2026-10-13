@@ -29,12 +29,16 @@ your own node.
   Kilojoin (relay.kilombino.com). It is off until you turn it on there.
 - Only a hot wallet can join. A pool is native SegWit (bc1q) or Taproot (bc1p), and takes coins of its
   type only: the wallet has both accounts (the Taproot one is set up at the first unlock after 0.3.0).
-  You can bring several coins if the pool allows it, and make the perfect (exact) coin first.
-  Joining and signing ask for your password; the server checks your mixed output, your change and your
-  fee before signing.
+  You can bring several coins if the pool allows it, and make the perfect (exact) coin first: once it
+  has one confirmation, it joins the pool (or opens the one you were setting up) by itself.
+  Opening or joining asks for your password once; the server checks your mixed output, your change and
+  your fee before signing.
 - Keep Kilowallet running until the round is sent: the server keeps it going with the page closed.
   Pool events show up as StartOS notifications, and through your own Telegram bot if you set one.
-- *Sign on its own* (optional) accepts and signs by itself, only while the wallet is unlocked.
+- *Sign on its own* (on by default) accepts closing and signs by itself, so the password you gave when
+  opening or joining is the only one. The keys of that round's coins stay in the server's memory until
+  the round ends, also after you lock the wallet; if the service restarts, unlock it once to sign.
+  A round closed with fewer people than the pool's minimum is never signed.
 
 ## Ark
 
