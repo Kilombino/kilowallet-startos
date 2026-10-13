@@ -1,12 +1,12 @@
 import { IMPOSSIBLE, VersionInfo } from '@start9labs/start-sdk'
 
 export const current = VersionInfo.of({
-  version: '0.4.0:0',
+  version: '0.4.1:0',
   releaseNotes: {
     en_US:
-      "One password per pool, as in Kilowallet 1.0. Sign on its own is now on by default: the password you give when opening or joining a pool is the only one, and the round accepts closing and signs by itself, also after you lock the wallet (the keys of that round's coins stay in memory until it ends). The perfect (exact) coin now joins its pool, or opens the one you were setting up, by itself at its first confirmation. Security: a round closed with fewer people than the pool's minimum is never signed. Fixed: your pools showed as [object HTMLDivElement].",
+      "Coinjoin as in the Kilowallet app: JOIN, IN PROGRESS and HISTORY tabs, and a compact card per round with the bar of its five steps (people, closing vote, signatures, sent, confirmed), what is happening and where your coin is. Tap a card for its details and buttons; it opens by itself when the round waits on you. Includes 0.4.0: one password per pool, the perfect coin joins by itself, rounds under the pool's minimum never signed.",
     es_ES:
-      'Una contraseña por pool, como en Kilowallet 1.0. Firmar solo viene ahora activado: la contraseña que das al abrir o unirte a un pool es la única, y la ronda acepta el cierre y firma sola, también después de bloquear el monedero (las claves de las monedas de esa ronda quedan en memoria hasta que acaba). La moneda perfecta (exacta) entra ahora sola en su pool, o abre el que estabas preparando, al tener su primera confirmación. Seguridad: nunca se firma una ronda cerrada con menos gente que el mínimo del pool. Arreglado: tus pools salían como [object HTMLDivElement].',
+      'Coinjoin como en la app Kilowallet: pestañas JOIN, IN PROGRESS y HISTORY, y una tarjeta compacta por ronda con la barra de sus cinco pasos (gente, votación, firmas, enviado, confirmado), lo que está pasando y dónde está tu moneda. Toca una tarjeta para ver el detalle y los botones; se abre sola cuando la ronda espera por ti. Incluye 0.4.0: una contraseña por pool, la moneda perfecta entra sola, nunca se firma una ronda con menos gente que el mínimo.',
   },
   migrations: {
     up: async ({ effects }) => {},
