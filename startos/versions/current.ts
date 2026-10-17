@@ -1,12 +1,12 @@
 import { IMPOSSIBLE, VersionInfo } from '@start9labs/start-sdk'
 
 export const current = VersionInfo.of({
-  version: '0.4.2:0',
+  version: '0.4.3:0',
   releaseNotes: {
     en_US:
-      "A coinjoin round whose pool's creator had gone (its app closed) could stay in progress for good, stuck at the closing vote even after the pool expired. Now a vote also ends with the pool's expiry, the others give up three minutes past its deadline if the creator neither closed nor reopened it, and a pool its creator has not re-announced for 35 minutes is let go. The round goes to the history; your coin never left.",
+      'Kilowallet now checks on its own which chain the node follows, at start and every minute. The SHA-256 chain shares its history with BLAKE2b up to block 961,639, so a node on it would show the same coins as if they were XBT. If the node follows the SHA-256 chain, has stopped just before the BLAKE2b fork, or is still syncing below it, the page says so and Kilowallet creates, scans and sends nothing until it is on the BLAKE2b chain.',
     es_ES:
-      'Una ronda de coinjoin cuyo creador se había ido (su app cerrada) podía quedarse en curso para siempre, atascada en la votación de cierre incluso con el pool ya caducado. Ahora una votación también termina cuando caduca el pool, los demás se retiran a los tres minutos del plazo si el creador no cerró ni reabrió, y un pool que su creador lleva 35 minutos sin anunciar se suelta. La ronda pasa al historial; tu moneda nunca salió.',
+      'Kilowallet comprueba ahora por su cuenta qué cadena sigue el nodo, al arrancar y cada minuto. La cadena SHA-256 comparte su historia con BLAKE2b hasta el bloque 961.639, así que un nodo en ella enseñaría las mismas monedas como si fueran XBT. Si el nodo sigue la cadena SHA-256, se ha parado justo antes de la bifurcación BLAKE2b o aún sincroniza por debajo de ella, la página lo dice y Kilowallet no crea, no escanea ni envía nada hasta que esté en la cadena BLAKE2b.',
   },
   migrations: {
     up: async ({ effects }) => {},

@@ -16,7 +16,11 @@ BUILDX_BUILDER=startos make x86 arm
 ```
 
 Depends on a BLAKE2b node: `knots-blake2b` (Bitcoin Knots BLAKE2b Companion) or `bitcoind` on the
-BLAKE2b chain; the service checks the chain before starting.
+BLAKE2b chain; the service checks the chain before starting (the `chain` oneshot asks
+`getdeploymentinfo` whether BLAKE2b is active). The server checks again on its own, at start and
+every minute: the raw header of the node's best block must be 164 bytes past block 961,640 (80 bytes
+there means the SHA-256 chain). Until then the web page shows why and the API refuses everything but
+lock; no watch-only wallet is created in the node.
 
 ## Ark
 
