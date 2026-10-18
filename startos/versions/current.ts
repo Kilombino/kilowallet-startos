@@ -1,12 +1,12 @@
 import { IMPOSSIBLE, VersionInfo } from '@start9labs/start-sdk'
 
 export const current = VersionInfo.of({
-  version: '0.4.3:0',
+  version: '0.5.0:0',
   releaseNotes: {
     en_US:
-      'Kilowallet now checks on its own which chain the node follows, at start and every minute. The SHA-256 chain shares its history with BLAKE2b up to block 961,639, so a node on it would show the same coins as if they were XBT. If the node follows the SHA-256 chain, has stopped just before the BLAKE2b fork, or is still syncing below it, the page says so and Kilowallet creates, scans and sends nothing until it is on the BLAKE2b chain.',
+      "Kilojoin v3, as in Kilowallet 1.1.5: every coinjoin pool you open now has blind outputs. When a round closes, each member's mixed output is signed blindly by the pool's creator and handed in from a fresh key, so nobody (not the relay, the other members, or the creator) can tell whose output is whose. Only the creator's own key runs the pool, votes and leaving are proven with a code tied to each seat, and every member checks every seat's coins against the chain. v1 and v2 pools still join as before; wallets older than Kilowallet 1.1.5 or Kilojoin 0.7 don't see v3 pools.",
     es_ES:
-      'Kilowallet comprueba ahora por su cuenta qué cadena sigue el nodo, al arrancar y cada minuto. La cadena SHA-256 comparte su historia con BLAKE2b hasta el bloque 961.639, así que un nodo en ella enseñaría las mismas monedas como si fueran XBT. Si el nodo sigue la cadena SHA-256, se ha parado justo antes de la bifurcación BLAKE2b o aún sincroniza por debajo de ella, la página lo dice y Kilowallet no crea, no escanea ni envía nada hasta que esté en la cadena BLAKE2b.',
+      'Kilojoin v3, como en Kilowallet 1.1.5: todos los pools de coinjoin que abras tienen ahora salidas ciegas. Al cerrar una ronda, el creador del pool firma a ciegas la salida mezclada de cada miembro, y cada uno la entrega desde una clave nueva, así que nadie (ni el relay, ni los demás miembros, ni el creador) puede saber qué salida es de quién. Solo la clave propia del creador dirige el pool, los votos y las salidas se demuestran con un código ligado a cada asiento, y cada miembro comprueba las monedas de todos los asientos contra la cadena. Los pools v1 y v2 se siguen uniendo como antes; las carteras anteriores a Kilowallet 1.1.5 o Kilojoin 0.7 no ven los pools v3.',
   },
   migrations: {
     up: async ({ effects }) => {},
