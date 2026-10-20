@@ -1,7 +1,7 @@
 import { IMPOSSIBLE, VersionInfo } from '@start9labs/start-sdk'
 
 export const current = VersionInfo.of({
-  version: '0.6.0:0',
+  version: '0.6.0:1',
   releaseNotes: {
     en_US:
       "Kilojoin v4, as in Kilowallet 1.2.0: whoever opens a coinjoin pool now picks how many mixed outputs each person gets, 1 to 5. With 4 outputs of 1 000 000 sats, the perfect coin is 4 000 000 plus the fee, and each person gets four outputs of 1 000 000 to four unused addresses of their own. Each output is signed blindly and handed in on its own (its own key, connection and wait), so not even the creator can tell which outputs are the same person's. A pool of one output each is still announced as v3, so every v3 wallet can join it; only Kilowallet 1.2.0 and Kilojoin 0.8 or newer see pools of 2 to 5 outputs.",
