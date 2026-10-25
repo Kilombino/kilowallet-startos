@@ -1,6 +1,6 @@
 # Kilowallet
 
-Kilowallet is the Bitcoin BLAKE2b (XBT) wallet of the Kilowallet Android app, on your own server and
+Kilowallet is the Bitcoin BLAKE2b (BTC) wallet of the Kilowallet Android app, on your own server and
 your own node.
 
 ## First steps
@@ -54,8 +54,8 @@ your own node.
   can choose mempool.kilombino.com instead, as the phone app does.
 - **Receive**: an Ark address, a Lightning invoice (the receive cost is shown before; about
   4 100 sats, so ask for at least about 5 500), a reusable BOLT12 offer, or a **deposit** address
-  for plain on-chain XBT that you then **MOVE INTO ARK** (at least 20 000 sats, 3 confirmations).
-- **Send** to an Ark address, a Lightning invoice or offer, or an XBT address (a withdrawal). The
+  for plain on-chain BTC that you then **MOVE INTO ARK** (at least 20 000 sats, 3 confirmations).
+- **Send** to an Ark address, a Lightning invoice or offer, or a Bitcoin (BLAKE2b) address (a withdrawal). The
   exact cost is shown first and your password is asked again. Every Ark payment pre-pays recovery
   reserves for the coins it uses, which can be a big share of a small payment.
 - **Coins expire after about 30 days** (4 320 blocks). The Ark engine renews them by itself while
