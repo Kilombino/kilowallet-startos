@@ -1,12 +1,12 @@
 import { IMPOSSIBLE, VersionInfo } from '@start9labs/start-sdk'
 
 export const current = VersionInfo.of({
-  version: '0.9.1:0',
+  version: '0.9.2:0',
   releaseNotes: {
     en_US:
-      "As in Kilowallet 1.3.9. Coinjoin rounds that timed out after everyone agreed: when a vote ended by its deadline or a last yes came in just then, the pool's creator could close it twice with two round ids, the others kept the first one, nobody got a blind signature, and the round was cancelled after five minutes (no coin moved). A vote now closes once, and a member waiting for its blind signature follows a later closing from the same creator, so rounds also go through with creators on older versions. Also: a seat whose coin was spent after joining is taken out of the pool instead of making every newcomer leave; a member that can't reach the chain keeps its seat; a seat that falls asleep as the round closes is left out and the round closes again with the rest; a seat taken back is not announced again as someone joining.",
+      "As in Kilowallet 1.4.2. Ark: cheaper payments. The Ark engine follows Paperclip's wallet 0.9.1: on servers that offer it (Paperclip does), an ordinary Ark payment pre-pays much smaller recovery reserves, about 1 056 sats for a coin spent whole and 1 584 for one with change (before: about 2 700 and 4 000). Receiving through Lightning, paying Lightning invoices and leaving to an on-chain address cost the same as before. Coinjoin rounds now keep when they went out and when they ended. New icon: the coin alone, without the dark circle.",
     es_ES:
-      'Como en Kilowallet 1.3.9. Rondas de coinjoin que caducaban después de que todos aceptaran: cuando una votación acababa por tiempo o llegaba justo entonces el último sí, el creador del pool podía cerrarlo dos veces con dos números de ronda, los demás se quedaban con el primero, nadie recibía su firma ciega y la ronda se cancelaba a los cinco minutos (sin mover ninguna moneda). Ahora una votación cierra una sola vez, y quien espera su firma ciega sigue un cierre posterior del mismo creador, así que también funcionan los pools de creadores con versiones anteriores. Además: un asiento cuya moneda se gastó después de unirse sale del pool en vez de hacer que cada recién llegado se vaya; quien no puede consultar la cadena conserva su asiento; un asiento que se duerme al cerrarse la ronda se queda fuera y la ronda vuelve a cerrarse con el resto; un asiento recuperado no se anuncia otra vez como alguien que se une.',
+      'Como en Kilowallet 1.4.2. Ark: pagos más baratos. El motor de Ark sigue a la cartera 0.9.1 de Paperclip: en los servidores que lo ofrecen (Paperclip lo hace), un pago Ark normal prepaga reservas de recuperación mucho menores, unos 1 056 sats por una moneda gastada entera y 1 584 por una con cambio (antes: unos 2 700 y 4 000). Recibir por Lightning, pagar facturas Lightning y salir a una dirección on-chain cuestan lo mismo que antes. Las rondas de coinjoin guardan ahora cuándo salieron y cuándo terminaron. Icono nuevo: la moneda sola, sin el círculo oscuro.',
   },
   migrations: {
     up: async ({ effects }) => {},
