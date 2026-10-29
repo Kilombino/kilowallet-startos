@@ -9,8 +9,10 @@ your own node.
    Its wallet feature must be on (the default). If both are installed, the action *Choose BLAKE2b
    node* picks one.
 2. Open Kilowallet's web interface. On your phone, use your browser's *Add to home screen* to get it as an app.
-3. Choose a password, then create a new wallet, restore one from its words, or watch one by its
-   extended public key (xpub / ypub / zpub).
+3. Create a new wallet with **NEW (DICE)** (roll a real die 50 times for 12 words, or 99 for 24, and
+   write the words down), restore one from its words, or watch one by its extended public key
+   (xpub / ypub / zpub). Then choose the password that opens it on this server. The page looks and
+   works like the Kilowallet Android app; its language is chosen in settings (⚙).
 
 ## How it works
 
@@ -68,7 +70,7 @@ your own node.
   old backup brings back coins already spent; the tab then leaves them out of your balance.
 - Ark events (payments in and out, moves into Ark, renewals, withdrawals, coins close to expiry,
   the engine not running) show up as StartOS notifications, and through your own Telegram bot if
-  you set one (ARK tab → Notifications).
+  you set one (COINJOIN tab → Telegram alerts).
 
 ## Updates
 
