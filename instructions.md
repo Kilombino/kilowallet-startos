@@ -41,6 +41,12 @@ your own node.
   opening or joining is the only one. The keys of that round's coins stay in the server's memory until
   the round ends, also after you lock the wallet; if the service restarts, unlock it once to sign.
   A round closed with fewer people than the pool's minimum is never signed.
+- *Asynchronous rounds (Kilojoin v6)*, when opening a pool, are for people who answer hours apart: up
+  to an hour to answer, 30 minutes for the outputs and two hours to sign, with an end time no round
+  goes past, and nobody is left out without being asked again. As the pool's creator, this server runs
+  the round, so keep it running until the round is done. Once you signed, your coins stay held until
+  the round's transaction confirms or one of its coins is spent elsewhere. Only wallets that know
+  Kilojoin v6 (Kilowallet 1.5.0, Kilojoin 0.10.0 or newer) see these pools.
 
 ## Ark
 
