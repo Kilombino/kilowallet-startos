@@ -18,6 +18,8 @@ your own node.
 
 - Your node gets a **watch-only** wallet named `kilowallet-…`: only the public key, no private
   keys. It tracks your history, the mempool and your balance. A pruned node works too.
+- Mined coins still maturing are not in the balance and cannot be sent yet: they show apart under
+  it (**Maturing (mined)**), each with the block it unlocks at and an estimated date.
 - A hot wallet's words are encrypted with your password on this server, and the password is asked
   again before every send. **There is no way to recover the password**: keep your words safe.
 - A restored wallet: the node looks back from the oldest coin it still holds (or from the date you
