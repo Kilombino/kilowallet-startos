@@ -1,12 +1,12 @@
 import { IMPOSSIBLE, VersionInfo } from '@start9labs/start-sdk'
 
 export const current = VersionInfo.of({
-  version: '0.10.3:0',
+  version: '0.10.4:0',
   releaseNotes: {
     en_US:
-      'Mined coins that are still maturing now show separately under your balance, with the block each one unlocks at and an estimated date. As before, they cannot be spent until they mature.',
+      'As in Kilowallet 1.5.6: a movement\'s details follow its live state while open (a confirmation shows at once and speed-up/cancel disappear), and a relay error on the coinjoin tab no longer covers a join or round message.',
     es_ES:
-      'Las monedas minadas que aún están madurando ahora salen aparte bajo tu saldo, con el bloque en que se desbloquea cada una y una fecha estimada. Como antes, no se pueden gastar hasta que maduren.',
+      'Como en Kilowallet 1.5.6: el detalle de un movimiento sigue su estado real mientras está abierto (la confirmación sale al momento y desaparecen acelerar/cancelar), y un error del relay en la pestaña de coinjoin ya no tapa el aviso de unirse o de la ronda.',
   },
   migrations: {
     up: async ({ effects }) => {},
