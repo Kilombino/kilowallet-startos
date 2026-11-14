@@ -16,3 +16,10 @@ export const nodeDescription = {
   es_ES:
     'Kilowallet lee tu saldo y tu historial de tu propio nodo BLAKE2b, y emite a través de él (con su función de wallet activada). Vale cualquiera de los dos: Bitcoin Knots (BLAKE2b) Companion, o Bitcoin en la cadena BLAKE2b.',
 }
+
+export const torDescription = {
+  en_US:
+    'Optional, for PAY THROUGH JOINBLAKET only: the JoinBlaket directory is an onion, reached through the Tor service. Without it everything else works and JoinBlaket says Tor is not available.',
+  es_ES:
+    'Opcional, solo para PAGAR CON JOINBLAKET: el directorio de JoinBlaket es un onion, al que se llega por el servicio Tor. Sin él todo lo demás funciona y JoinBlaket dice que Tor no está disponible.',
+}

@@ -89,6 +89,19 @@ export const main = sdk.setupMain(async ({ effects }) => {
     })
   }
 
+  // Tor's SOCKS proxy over the bridge, for PAY THROUGH JOINBLAKET (its directory is an onion).
+  // With the 9050 fallback the address is the same whether Tor is installed or not (the
+  // OS IP and Tor's fixed port), so this never restarts main; without Tor running the server
+  // finds nothing answering there and the page says Tor does not answer.
+  const torSocks = await sdk.host
+    .getBridgeAddress(effects, {
+      packageId: 'tor',
+      hostId: 'socks',
+      internalPort: 9050,
+      fallbackPort: 9050,
+    })
+    .const()
+
   const sub = await sdk.SubContainer.of(
     effects,
     { imageId: 'kilowallet' },
@@ -141,6 +154,7 @@ export const main = sdk.setupMain(async ({ effects }) => {
           KILOWALLET_PORT: String(uiPort),
           BITCOIN_RPC_URL: `http://${rpc}/`,
           BITCOIN_RPC_COOKIE: `${nodeMount}/.cookie`,
+          KILOWALLET_TOR_SOCKS: torSocks,
         },
       },
       ready: {

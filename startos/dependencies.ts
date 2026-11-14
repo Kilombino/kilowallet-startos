@@ -1,4 +1,4 @@
-import { nodeDescription } from './manifest/i18n'
+import { nodeDescription, torDescription } from './manifest/i18n'
 import { sdk } from './sdk'
 import { chosenNode } from './utils'
 
@@ -29,6 +29,23 @@ const bitcoind = sdk.Dependency.optional('bitcoind', {
   enabled: async ({ effects }) => (await chosenNode(effects)) === 'bitcoind',
 })
 
+// Tor, for PAY THROUGH JOINBLAKET only: its directory is an onion. Listed so it shows up as
+// Kilowallet's optional dependency, but never required: the wallet runs without it, and the
+// page says Tor is not available. Its SOCKS proxy is read in main.ts (bridge address, with the
+// fixed 9050 fallback while Tor is not installed).
+const tor = sdk.Dependency.optional('tor', {
+  description: torDescription,
+  metadata: {
+    title: 'Tor',
+    icon: 'https://raw.githubusercontent.com/Start9Labs/tor-startos/65faea17febc739d910e8c26ff4e61f6333487a8/icon.svg',
+  },
+  versionRange: '*',
+  kind: 'running',
+  healthChecks: [],
+  enabled: async () => false,
+})
+
 export const dependencies = sdk.Dependencies.of()
   .addDependency(companion)
   .addDependency(bitcoind)
+  .addDependency(tor)
