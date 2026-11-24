@@ -1,12 +1,12 @@
 import { IMPOSSIBLE, VersionInfo } from '@start9labs/start-sdk'
 
 export const current = VersionInfo.of({
-  version: '0.11.0:0',
+  version: '0.11.1:0',
   releaseNotes: {
     en_US:
-      'PAY THROUGH JOINBLAKET, as in Kilowallet 1.6.0: a payment to one bc1q address can go out as the CoinJoin output of a JoinMarket CoinJoin on the BTC chain, with makers that hold a fidelity bond. SEND shows the market (makers, minimum, maximum and the cost for the amount); you confirm each maker’s fee and the mining fee before anything about your coins leaves the server, then follow the progress and get the txid with a link to the explorer. The JoinBlaket directory is an onion: install the Tor service (optional dependency) to use it; everything else works without it.',
+      'PAY THROUGH JOINBLAKET connects to JoinBlaket’s three directories at once, as Kilowallet 1.6.4: if one is down the payment goes on through the others, and a maker seen on more than one directory counts once. When your coins don’t cover a CoinJoin, the message says how far to lower the amount. The directories are onions: install the Tor service (optional dependency) to use JoinBlaket; everything else works without it.',
     es_ES:
-      'PAGAR CON JOINBLAKET, como en Kilowallet 1.6.0: un pago a una dirección bc1q puede salir como la salida CoinJoin de un CoinJoin de JoinMarket en la cadena BTC, con makers que tienen fidelity bond. ENVIAR muestra el mercado (makers, mínimo, máximo y el coste para el importe); confirmas la comisión de cada maker y la de minería antes de que salga del servidor nada sobre tus monedas, y después sigues el progreso y obtienes el txid con un enlace al explorador. El directorio de JoinBlaket es un onion: instala el servicio Tor (dependencia opcional) para usarlo; todo lo demás funciona sin él.',
+      'PAGAR CON JOINBLAKET se conecta a la vez a los tres directorios de JoinBlaket, como Kilowallet 1.6.4: si uno está caído, el pago sigue por los demás, y un maker visto en más de un directorio cuenta una sola vez. Si tus monedas no cubren un CoinJoin, el mensaje dice cuánto bajar el importe. Los directorios son onions: instala el servicio Tor (dependencia opcional) para usar JoinBlaket; todo lo demás funciona sin él.',
   },
   migrations: {
     up: async ({ effects }) => {},

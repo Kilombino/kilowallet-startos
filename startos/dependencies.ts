@@ -29,7 +29,7 @@ const bitcoind = sdk.Dependency.optional('bitcoind', {
   enabled: async ({ effects }) => (await chosenNode(effects)) === 'bitcoind',
 })
 
-// Tor, for PAY THROUGH JOINBLAKET only: its directory is an onion. Listed so it shows up as
+// Tor, for PAY THROUGH JOINBLAKET only: its directories are onions. Listed so it shows up as
 // Kilowallet's optional dependency, but never required: the wallet runs without it, and the
 // page says Tor is not available. Its SOCKS proxy is read in main.ts (bridge address, with the
 // fixed 9050 fallback while Tor is not installed).

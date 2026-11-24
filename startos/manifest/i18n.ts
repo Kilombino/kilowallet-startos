@@ -19,7 +19,7 @@ export const nodeDescription = {
 
 export const torDescription = {
   en_US:
-    'Optional, for PAY THROUGH JOINBLAKET only: the JoinBlaket directory is an onion, reached through the Tor service. Without it everything else works and JoinBlaket says Tor is not available.',
+    'Optional, for PAY THROUGH JOINBLAKET only: JoinBlaket’s directories are onions, reached through the Tor service. Without it everything else works and JoinBlaket says Tor is not available.',
   es_ES:
-    'Opcional, solo para PAGAR CON JOINBLAKET: el directorio de JoinBlaket es un onion, al que se llega por el servicio Tor. Sin él todo lo demás funciona y JoinBlaket dice que Tor no está disponible.',
+    'Opcional, solo para PAGAR CON JOINBLAKET: los directorios de JoinBlaket son onions, a los que se llega por el servicio Tor. Sin él todo lo demás funciona y JoinBlaket dice que Tor no está disponible.',
 }
